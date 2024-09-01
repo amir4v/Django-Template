@@ -4,4 +4,4 @@ import os
 
 os.environ['PYTEST_RUNNING'] = 'true'
 
-from core.app.tests.fixtures import *
+from app.tests.fixtures import *

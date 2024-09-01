@@ -12,7 +12,7 @@ INTERNAL_IPS = [
 ]
 
 INSTALLED_APPS = [
-    'daphne',
+    # 'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -23,23 +23,19 @@ INSTALLED_APPS = [
     # Third party
     'corsheaders',
     'rest_framework',
+	'rest_framework.authtoken',
     'rest_framework_simplejwt',
     'django_filters',
-    'debug_toolbar',
-    'storages',
+    # 'debug_toolbar',
 
     # Apps
-    'core.accounts.apps.AccountsConfig',
-    'core.blocks.apps.BlocksConfig',
-    'core.comments.apps.CommentsConfig',
-    'core.config.apps.SettingsConfig',
-    'core.recipes.apps.RecipesConfig',
+	'app',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    # 'debug_toolbar.middleware.DebugToolbarMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -48,7 +44,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'core.core.urls'
+ROOT_URLCONF = 'core.urls'
 
 TEMPLATES = [
     {
@@ -66,15 +62,15 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'core.core.asgi.application'
-WSGI_APPLICATION = 'core.core.wsgi.application'
+WSGI_APPLICATION = 'core.wsgi.application'
+# ASGI_APPLICATION = 'core.asgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'core',
-        'USER': 'core',
-        'PASSWORD': 'core',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
         'ATOMIC_REQUESTS': True,
@@ -84,7 +80,7 @@ DATABASES = {
         #                   `'CONN_MAX_AGE': 0` is used as workaround. In case it notably affects performance
         #                   implement a solution that either closes database connections on WebSocket client
         #                   disconnect and implement connection pooling outside Django (BgBouncer or similar)
-        'CONN_MAX_AGE': 0,
+        'CONN_MAX_AGE': 100,
     }
 }
 
@@ -103,7 +99,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'accounts.Account'
+# AUTH_USER_MODEL = 'accounts.Account'
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
